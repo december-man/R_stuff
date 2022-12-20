@@ -188,7 +188,7 @@ fit_no_exam <- lm(Fertility ~ . -Examination, swiss)
 # comparison of 'R-squared' from 2 MLR models fit_full and fit_no_agcult using ANOVA
 anova(fit_full, fit_no_agcult)
 anova(fit_full, fit_no_exam)
-# model selection using olssr and base r
+# model selection using olsrr and base r
 ols_step_best_subset(lm(Fertility ~., swiss))
 optimal_fit <- step(fit_full, direction = 'backward')
 
@@ -215,7 +215,7 @@ summary(model)
 my_vector <- c(0.027, 0.079, 0.307, 0.098, 0.021, 0.091, 0.322, 0.211, 0.069, 0.261, 0.241, 0.166, 0.283, 0.041, 0.369, 0.167, 0.001, 0.053, 0.262, 0.033, 0.457, 0.166, 0.344, 0.139, 0.162, 0.152, 0.107, 0.255, 0.037, 0.005, 0.042, 0.220, 0.283, 0.050, 0.194, 0.018, 0.291, 0.037, 0.085, 0.004, 0.265, 0.218, 0.071, 0.213, 0.232, 0.024, 0.049, 0.431, 0.061, 0.523)
 shapiro.test(sqrt(my_vector))
 
-# Homework 16 scale func - perform Z-normalisation of input data and get LR coefficients
+# Homework 16 scale func - perform Z-normalization of input data and get LR coefficients
 z <- scale(mtcars[,c(1,3)])
 attr(z, "scaled:center")
 beta.coef <- function(x) {
@@ -243,7 +243,7 @@ swiss$Examination_squared <- (swiss$Examination)^2
 lm2 <- lm(Education ~ Examination + Examination_squared, swiss)
 summary(lm2)
 
-# Examination_sqaured predicts Education better because of the quadratic nature of dependency
+# Examination_squared predicts Education better because of the quadratic nature of dependency
 ggplot(swiss, aes(Examination_squared, Education))+
   geom_point()+
   geom_smooth()
