@@ -35,3 +35,9 @@ koenkerlog <- breusch_pagan(fitlog, koenker = T) # still heavily heteroscedastic
 # Goldfeld - Quandt test, parametric and non-parametric
 gq <- goldfeld_quandt(fit, method = "parametric", alternative = "greater") # non-parametric requires Rmpfr lib
 goldfeld_quandt(lm(Agriculture ~ Infant.Mortality, swiss), method = "parametric") #p.value interpretation is inversed for F-test?
+
+# Multicollinearity, VIF
+# vif() - 1/1-Rj^2 for Xj ~ X1-Xn, j=1..n, basically checking whether predictors are correlated using 
+# linear regression model of them being predictors for each other.
+library(car)
+vif(lm(Fertility ~ ., swiss))
